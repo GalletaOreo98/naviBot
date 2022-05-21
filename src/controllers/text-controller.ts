@@ -1,6 +1,6 @@
 import { Context } from "telegraf";
 import { Update } from "telegraf/typings/core/types/typegram";
-import { randomBetween } from "../util";
+import { elegirEntre, pptGame, randomBetween } from "../util";
 
 const comandoIniciador = 'nv'
 
@@ -20,8 +20,15 @@ const textController = (text: String, ctx:Context<Update>) => {
                     const numeroRandom = randomBetween(parseInt(limitesNumero[1]), parseInt(limitesNumero[0]))
                     ctx.reply(numeroRandom.toString())
                     break
-                case 'time':
-                    ctx.reply(ctx.botInfo.first_name)
+                case 'ppt':
+                    ctx.reply(pptGame(restoDelSubComando))
+                    break
+                case 'ee':
+                case 'elegirEntre':
+                    const e = restoDelSubComando.split(" ")
+                    console.log(e)                    
+                    const eleccion = elegirEntre(e)
+                    ctx.reply(eleccion)
                     break
             
                 default:

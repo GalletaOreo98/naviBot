@@ -1,1 +1,2 @@
-export {randomBetween} from './random'
+export { randomBetween, elegirEntre } from './random'
+export { pptGame } from './minigames'
