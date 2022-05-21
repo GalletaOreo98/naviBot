@@ -11,7 +11,7 @@ export { bot }
 require('./eventos/on-text')
 
 bot.start( ctx => {
-    ctx.reply('Bienvenido usuario')
+    ctx.reply('¡Bienvenido!')
 }) 
 
 bot.launch().then( () => {
