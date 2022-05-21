@@ -19,10 +19,13 @@ const textController = (text: String, ctx:Context<Update>) => {
                     const limitesNumero = restoDelSubComando.split(" ", 2)
                     const numeroRandom = randomBetween(parseInt(limitesNumero[1]), parseInt(limitesNumero[0]))
                     ctx.reply(numeroRandom.toString())
-                    break;
+                    break
+                case 'time':
+                    ctx.reply(ctx.botInfo.first_name)
+                    break
             
                 default:
-                    break;
+                    break
             }
         }
 
