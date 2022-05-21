@@ -1,0 +1,24 @@
+{
+  "name": "navibot",
+  "version": "1.0.0",
+  "description": "Telegram bot NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "nodemon build/index.js",
+    "ts-dev": "nodemon src/index.ts"
+  },
+  "author": "Christopher",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "telegraf": "^4.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.35",
+    "nodemon": "^2.0.16",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.4"
+  }
+}
