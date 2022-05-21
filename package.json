@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "node build/index.js",
     "dev": "nodemon build/index.js",
-    "ts-dev": "nodemon src/index.ts"
+    "tsdev": "nodemon src/index.ts"
   },
   "author": "Christopher",
   "license": "ISC",
