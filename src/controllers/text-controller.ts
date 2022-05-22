@@ -25,9 +25,8 @@ const textController = (text: String, ctx:Context<Update>) => {
                     break
                 case 'ee':
                 case 'elegirEntre':
-                    const e = restoDelSubComando.split(" ")
-                    console.log(e)                    
-                    const eleccion = elegirEntre(e)
+                    const elementos = restoDelSubComando.split(", ")
+                    const eleccion = elegirEntre(elementos)
                     ctx.reply(eleccion)
                     break
             
