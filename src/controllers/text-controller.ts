@@ -1,6 +1,6 @@
 import { Context } from "telegraf";
 import { Update } from "telegraf/typings/core/types/typegram";
-import { elegirEntre, pptGame, randomBetween } from "../util";
+import { elegirEntre, mezclar, pptGame, randomBetween } from "../util";
 
 const comandoIniciador = 'nv'
 
@@ -26,8 +26,11 @@ const textController = (text: String, ctx:Context<Update>) => {
                 case 'ee':
                 case 'elegirEntre':
                     const elementos = restoDelSubComando.split(", ")
-                    const eleccion = elegirEntre(elementos)
-                    ctx.reply(eleccion)
+                    ctx.reply(elegirEntre(elementos))
+                    break
+                case 'mz':
+                    const elementosAMezclar = restoDelSubComando.split(", ")
+                    ctx.reply(mezclar(elementosAMezclar))
                     break
             
                 default:
