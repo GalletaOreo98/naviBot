@@ -1,6 +1,14 @@
-# Para iniciar tsconfig
+# SCRIPTS
+
+## Crear archivo tsconfig
 npm run tsc -- --init
 
-# Para traducir a JavaScript (Crear build)
+## Traducir a JavaScript (Crear build)
 npm run build
 
+## Ejecutar bot ts
+npm run tsdev 
+
+# Bot
+- Navi
+- @OfficialNavi_bot 
