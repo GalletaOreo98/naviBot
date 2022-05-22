@@ -5,15 +5,15 @@ import { elegirEntre, mezclar, pptGame, randomBetween } from "../util";
 const comandoIniciador = 'nv'
 
 const textController = (text: String, ctx:Context<Update>) => {
-    text = text.toLowerCase()
+    //text = text.toLowerCase()
     try {
         const partesDelComando = text.split(' -', 2)
         const restoDelComando = partesDelComando[1]
         const subComando = restoDelComando.split(' ', 1)[0]
     
-        if (partesDelComando[0] === comandoIniciador) {
+        if (partesDelComando[0].toLowerCase() === comandoIniciador) {
             const restoDelSubComando = restoDelComando.replace(subComando + ' ', '')
-            switch (subComando) {
+            switch (subComando.toLowerCase()) {
                 case 'nr':
                 case 'numrand':
                     const limitesNumero = restoDelSubComando.split(" ", 2)
