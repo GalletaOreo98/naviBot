@@ -43,9 +43,6 @@ const textController = (text: String, ctx:Context<Update>) => {
                 case 're':
                 case 'repartirentre':
                     const elementosARepartir = restoDelSubComando.split(" : ")
-                    console.log(elementosARepartir);
-                    console.log(elementosARepartir[0].split(', '))
-                    console.log(elementosARepartir[1].split(', '))
                     ctx.reply(repartirEntre(elementosARepartir[0].split(', '), elementosARepartir[1].split(', ')),
                         { parse_mode: "HTML" } )
                     break
