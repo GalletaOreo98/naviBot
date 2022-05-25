@@ -1,12 +1,12 @@
 # SCRIPTS
 
-## Crear archivo tsconfig
+**Crear archivo tsconfig**
 npm run tsc -- --init
 
-## Traducir a JavaScript (Crear build)
+**Traducir a JavaScript (Crear build)**
 npm run build
 
-## Ejecutar bot ts
+**Ejecutar bot ts**
 npm run tsdev 
 
 # Bot
