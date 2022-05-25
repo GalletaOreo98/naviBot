@@ -8,7 +8,7 @@ export { bot }
 
 /*Obtiene los controladores que se usan en el bot 
 (Incrusta todas las funcionalidades a la instancia local 'const bot')*/
-require('./events/on-text')
+import './events/index'
 
 bot.start( ctx => {
     ctx.reply('¡Bienvenido!')

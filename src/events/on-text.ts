@@ -10,4 +10,5 @@ bot.on('text', ctx => {
     ctx.replyWithSticker('CAACAgIAAxkBAAIj9GKLQek8_V-9k6zM4a4CFujDej50AAIQAAOvxlEan3fNNZ78i6ckBA')
 }) */
 
-export { bot }
+
+export { bot as onText }
