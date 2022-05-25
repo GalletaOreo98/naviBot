@@ -42,6 +42,9 @@ const textController = (text: String, ctx:Context<Update>) => {
                     ctx.reply(repartirEntre(elementosARepartir[0].split(', '), elementosARepartir[1].split(', ')),
                         { parse_mode: "HTML" } )
                     break
+                case 'test':
+                    console.log(ctx);                    
+                    break
             
                 default:
                     break
