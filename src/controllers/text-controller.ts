@@ -5,13 +5,20 @@ import { elegirEntre, mezclar, pptGame, randomBetween, repartirEntre } from "../
 const comandoIniciador = 'nv'
 
 const textController = (text: String, ctx:Context<Update>) => {
-    //text = text.toLowerCase()
+
     try {
         const partesDelComando = text.split(' -', 2)
-        const restoDelComando = partesDelComando[1]
-        const subComando = restoDelComando.split(' ', 1)[0]
-    
+
         if (partesDelComando[0].toLowerCase() === comandoIniciador) {
+
+            const restoDelComando = partesDelComando[1]
+            
+            if (!restoDelComando) {
+                console.log('Comando invalido: restoDelComando')
+                return
+            }
+            const subComando = restoDelComando.split(' ', 1)[0]
+
             const restoDelSubComando = restoDelComando.replace(subComando + ' ', '')
             switch (subComando.toLowerCase()) {
                 case 'nr':
@@ -24,7 +31,7 @@ const textController = (text: String, ctx:Context<Update>) => {
                     ctx.reply(pptGame(restoDelSubComando))
                     break
                 case 'ee':
-                case 'elegirEntre':
+                case 'elegirentre':
                     const elementos = restoDelSubComando.split(", ")
                     ctx.reply(elegirEntre(elementos))
                     break
@@ -53,6 +60,7 @@ const textController = (text: String, ctx:Context<Update>) => {
 
     } catch (error) {
         console.log(error)
+        console.log('##############################\nError Inesperado\n##############################')
         return
     }
 }
