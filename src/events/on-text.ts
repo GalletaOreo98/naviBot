@@ -3,7 +3,7 @@ import { textController } from "../controllers/text-controller";
 
 bot.on('text', ctx => {
     textController(ctx.message.text, ctx);
-})
+});
 
 /* bot.on('chat_member', ctx => {    
     console.log(ctx.message);
@@ -12,4 +12,4 @@ bot.on('text', ctx => {
 }) */
 
 
-export { bot as onText }
+export { bot as onText };

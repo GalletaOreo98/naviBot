@@ -7,7 +7,7 @@ app.use(express.json());
 
 app.get('/', (_req, res) => {
     res.send('Hello world!');
-})
+});
 
 const bot = new Telegraf(process.env.BOT_TOKEN!);
 
@@ -20,12 +20,12 @@ import './events/index';
 
 bot.start( ctx => {
     ctx.reply('¡Bienvenido!');
-}) 
+});
 
 bot.launch().then( () => {
     console.log('Bot iniciado');
-})
+});
 
 app.listen(process.env.PORT, () => {
     console.log(`Server on port ${process.env.PORT}`);
-})
+});

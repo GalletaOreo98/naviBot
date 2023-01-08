@@ -1,8 +1,8 @@
 import { bot } from "../index";
 
 bot.help(ctx => {    
-    ctx.replyWithHTML(helpInfo)
-})
+    ctx.replyWithHTML(helpInfo);
+});
 
 const helpInfo = 
 `
@@ -26,6 +26,6 @@ Mezcla los <i>en</i> elementos
 
 <pre>nv -repartirentre &lt;c1&gt;, &lt;c2&gt;, &lt;c3&gt;,... &lt;cn&gt; : &lt;e1&gt;, &lt;e2&gt;, &lt;e3&gt;,... &lt;en&gt;</pre>
 Reparte los <i>en</i> elementos entre los <i>cn</i> contenedores
-`
+`;
 
-export { bot as help }
+export { bot as help };
