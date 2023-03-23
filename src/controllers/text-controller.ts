@@ -1,6 +1,6 @@
 import { Context } from "telegraf";
 import { Update } from "telegraf/typings/core/types/typegram";
-import { elegirEntre, mezclar, pptGame, randomBetween, repartirEntre } from "../util";
+import { elegirEntre, mezclar, pptGame, randomBetween, repartirEntre, sendMessage } from "../util";
 
 const comandoIniciador = 'nv';
 
@@ -49,7 +49,13 @@ const textController = (text: String, ctx:Context<Update>) => {
                 case 'test':
                     console.log(ctx);                    
                     break;
-            
+                case 'talk': 
+                    ctx.replyWithChatAction('typing');
+                    console.log("Respondiendo...");
+                    sendMessage(restoDelSubComando)
+                        .then((res)=> ctx.reply(res||"..."))
+                        .catch(()=> {console.log("No puedo responder"); ctx.reply("Tengo problemas técnicos...")})
+                    break;
                 default:
                     break;
             }
