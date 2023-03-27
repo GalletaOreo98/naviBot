@@ -51,10 +51,17 @@ const textController = (text: String, ctx:Context<Update>) => {
                     break;
                 case 'talk': 
                     ctx.replyWithChatAction('typing');
-                    console.log("Respondiendo...");
-                    sendMessage(restoDelSubComando)
-                        .then((res)=> ctx.reply(res||"..."))
-                        .catch(()=> {console.log("No puedo responder"); ctx.reply("Tengo problemas técnicos...")})
+                    const userID = ctx.message?.from.id || "ANONIMO";
+                    const formattedMessage = "USER-"+ userID + ": "+ restoDelSubComando;
+                    console.log(formattedMessage);
+                    sendMessage(formattedMessage)
+                        .then((res)=> {
+                            const respuesta = res.substring(6);
+                            console.log(res);
+                            ctx.reply(respuesta || "...");
+                        })
+                        .catch(()=> {console.log("No puedo responder"); ctx.reply("Tengo problemas técnicos...")});
+
                     break;
                 default:
                     break;
