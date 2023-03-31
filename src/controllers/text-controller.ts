@@ -60,7 +60,11 @@ const textController = (text: String, ctx:Context<Update>) => {
                             console.log(res);
                             ctx.reply(respuesta || "...");
                         })
-                        .catch(()=> {console.log("No puedo responder"); ctx.reply("Tengo problemas técnicos...")});
+                        .catch((err)=> {
+                            console.log("No puedo responder"); 
+                            console.log(err);
+                            ctx.reply("Tengo problemas técnicos...");
+                        });
 
                     break;
                 default:
