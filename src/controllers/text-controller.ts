@@ -1,10 +1,11 @@
 import { Context } from "telegraf";
 import { Update } from "telegraf/typings/core/types/typegram";
 import { elegirEntre, mezclar, pptGame, randomBetween, repartirEntre, sendMessage } from "../util";
+import { globalVars } from "../global-vars";
 
 const comandoIniciador = 'nv';
 
-const textController = (text: String, ctx:Context<Update>) => {
+const textController = (text: String, ctx: Context<Update>) => {
 
     try {
         const partesDelComando = text.split(' -', 2);
@@ -12,7 +13,7 @@ const textController = (text: String, ctx:Context<Update>) => {
         if (partesDelComando[0].toLowerCase() === comandoIniciador) {
 
             const restoDelComando = partesDelComando[1];
-            
+
             if (!restoDelComando) {
                 console.log('Comando invalido: restoDelComando');
                 return;
@@ -44,32 +45,57 @@ const textController = (text: String, ctx:Context<Update>) => {
                 case 'repartirentre':
                     const elementosARepartir = restoDelSubComando.split(" : ");
                     ctx.reply(repartirEntre(elementosARepartir[0].split(', '), elementosARepartir[1].split(', ')),
-                        { parse_mode: "HTML" } );
+                        { parse_mode: "HTML" });
                     break;
                 case 'test':
-                    console.log(ctx);                    
+                    console.log(ctx);
                     break;
-                case 'talk': 
+                case 'talk':
                     ctx.replyWithChatAction('typing');
                     const userID = ctx.message?.from.id || "ANONIMO";
-                    const formattedMessage = "USER-"+ userID + ": "+ restoDelSubComando;
+                    const formattedMessage = "USER-" + userID + ": " + restoDelSubComando;
                     console.log(formattedMessage);
                     sendMessage(formattedMessage)
-                        .then((res)=> {
+                        .then((res) => {
                             const respuesta = res.substring(6);
                             console.log(res);
                             ctx.reply(respuesta || "...");
                         })
-                        .catch((err)=> {
-                            console.log("No puedo responder"); 
+                        .catch((err) => {
+                            console.log("No puedo responder");
                             console.log(err);
                             ctx.reply("Tengo problemas técnicos...");
                         });
 
                     break;
+                case 'admin':
+                    const userId = ctx.message?.from.id || "ANONIMO";
+                    if (globalVars.userAdminID === userId.toString()) {
+                        globalVars.isTalkingDefaultMode = true;
+                        ctx.reply("isTalkingDefaultMode: " + globalVars.isTalkingDefaultMode.toString());
+                    } else {
+                        ctx.reply("No tienes permiso para usar este comando, usuario: " + userId)
+                    }
                 default:
                     break;
             }
+        } else {
+            if (!globalVars.isTalkingDefaultMode) return;
+            ctx.replyWithChatAction('typing');
+            const userID = ctx.message?.from.id || "ANONIMO";
+            const formattedMessage = "USER-" + userID + ": " + text;
+            console.log(formattedMessage);
+            sendMessage(formattedMessage)
+                .then((res) => {
+                    const respuesta = res.substring(6);
+                    console.log(res);
+                    ctx.reply(respuesta || "...");
+                })
+                .catch((err) => {
+                    console.log("No puedo responder");
+                    console.log(err);
+                    ctx.reply("Tengo problemas técnicos...");
+                });
         }
 
     } catch (error) {
